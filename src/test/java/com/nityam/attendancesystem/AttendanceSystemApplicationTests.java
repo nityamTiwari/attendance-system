@@ -1,4 +1,4 @@
-package com.nityam.attendance_system;
+package com.nityam.attendancesystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
