@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth
                                 .requestMatchers("/api/v1/auth/**").permitAll()
+                                .requestMatchers("/api/v1/attendance/**").authenticated()
                                 .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                                 .anyRequest().authenticated()
 

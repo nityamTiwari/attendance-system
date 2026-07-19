@@ -57,4 +57,12 @@ public class GlobalExceptionHandler{
 
    }
 
+   @ExceptionHandler(AlreadyClockedInException.class)
+    public ResponseEntity<Map<String,String>> handleAlreadyClockedInException(
+            AlreadyClockedInException ex){
+         Map<String,String> response = new HashMap<>();
+         response.put("error", ex.getMessage());
+         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+   }
+
 }

@@ -1,12 +1,9 @@
 package com.nityam.attendancesystem.auth.security;
 
-import com.nityam.attendancesystem.common.Role;
 import com.nityam.attendancesystem.employee.entity.Employee;
-import org.apache.catalina.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.List;
@@ -54,4 +51,9 @@ public class EmployeeUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public Employee getEmployee(){
+        return  employee;
+    }
+
 }
