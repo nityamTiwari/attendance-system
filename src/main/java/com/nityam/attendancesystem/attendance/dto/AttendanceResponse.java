@@ -1,11 +1,10 @@
 package com.nityam.attendancesystem.attendance.dto;
 
-import jakarta.persistence.GeneratedValue;
+import com.nityam.attendancesystem.common.AttendanceStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,8 +13,12 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClockInResponse {
+public class AttendanceResponse {
 
-    private String message;
     private LocalDateTime clockIn;
+    private LocalDateTime clockOut;
+    private Integer workingMinutes;
+    private LocalDate attendanceDate;
+    private AttendanceStatus status;
+
 }
