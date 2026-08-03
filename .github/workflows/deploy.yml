@@ -3,7 +3,7 @@ name: Deploy Attendance System
 on:
   push:
      branches:
-       -master
+       - master
 
 jobs:
     deploy:
@@ -11,15 +11,15 @@ jobs:
 
       steps:
         
-       -name: Checkout Repository
-        uses: actions/checkout@v4
+       - name: Checkout Repository
+         uses: actions/checkout@v4
         
-       -name: Deploy to EC2
-        uses: appleboy/ssh-actionv1.2.2
-        with:
-          host: ${{secrets.EC2_HOST}}
-          username: ${{secrets.EC2_USER}}
-          key: ${{secrets.SSH_PRIVATE_KEY}}
+       - name: Deploy to EC2
+         uses: appleboy/ssh-action@v1.2.2
+         with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
          
           script: |
              cd ~/attendance-system
