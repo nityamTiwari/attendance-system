@@ -1,0 +1,15 @@
+name: Deploy Attendance System
+
+on:
+  push:
+     branches:
+       -master
+
+jobs:
+    deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+        
+       -name: Checkout Repository
+        uses: actions/checkout@v4
