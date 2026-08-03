@@ -13,3 +13,18 @@ jobs:
         
        -name: Checkout Repository
         uses: actions/checkout@v4
+        
+       -name: Deploy to EC2
+        uses: appleboy/ssh-actionv1.2.2
+        with:
+          host: ${{secrets.EC2_HOST}}
+          username: ${{secrets.EC2_USER}}
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+         
+          script: |
+             cd ~/attendance-system
+             git fetch origin
+             git reset --hard origin/master
+             docker compose up -d --build
+
+
