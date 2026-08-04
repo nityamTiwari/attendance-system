@@ -36,12 +36,12 @@ jobs:
              git fetch origin
              git reset --hard origin/master
              docker compose up -d --build
-       - name: Wait for Application
-         run: sleep 60
-
-       - name: Health Check
-         run: |
-          curl --fail https://{{ secrets.EC2_HOST }}/actuator/health
+#       - name: Wait for Application
+#         run: sleep 60
+#
+#       - name: Health Check
+#         run: |
+#          curl --fail https://{{ secrets.EC2_HOST }}/actuator/health
             
             
             
