@@ -42,6 +42,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/v1/attendance/**").authenticated()
                                 .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                                 .anyRequest().authenticated()
+                        
                 )
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
