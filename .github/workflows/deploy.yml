@@ -41,7 +41,7 @@ jobs:
 
        - name: Health Check
          run: |
-          curl --fail https://{{ secrets.EC2_HOST }}/actuator/health
+          curl --fail https://${{ secrets.EC2_HOST }}/actuator/health
             
             
             
