@@ -37,7 +37,7 @@ jobs:
              git reset --hard origin/master
              docker compose up -d --build
        - name: Wait for Application
-         run: sleep 240
+         run: sleep 20
 
        - name: Health Check
          run: |
