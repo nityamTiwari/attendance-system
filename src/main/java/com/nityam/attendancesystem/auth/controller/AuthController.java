@@ -28,10 +28,6 @@ public class AuthController {
 
     }
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "CI/CD Working";
-    }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request){
