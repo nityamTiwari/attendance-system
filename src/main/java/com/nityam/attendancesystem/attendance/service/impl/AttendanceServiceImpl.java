@@ -3,6 +3,7 @@ package com.nityam.attendancesystem.attendance.service.impl;
 import com.nityam.attendancesystem.attendance.dto.AttendanceResponse;
 import com.nityam.attendancesystem.attendance.dto.ClockInResponse;
 import com.nityam.attendancesystem.attendance.dto.ClockOutResponse;
+import com.nityam.attendancesystem.attendance.dto.TodayAttendanceResponse;
 import com.nityam.attendancesystem.attendance.entity.Attendance;
 import com.nityam.attendancesystem.attendance.repository.AttendanceRepository;
 import com.nityam.attendancesystem.attendance.service.AttendanceService;
@@ -137,4 +138,37 @@ public class AttendanceServiceImpl implements AttendanceService {
                 employee.getEmployeeId());
         return responses;
     }
+
+    @Override
+    public TodayAttendanceResponse getTodayAttendance() {
+
+        Employee employee =  currentUserService.getCurrentEmployee();
+
+        LocalDate today = LocalDate.now();
+
+        Optional<Attendance> attendanceOptional = attendanceRepository
+                .findByEmployeeAndAttendanceDate( employee, today);
+
+        TodayAttendanceResponse response = new TodayAttendanceResponse();
+
+        response.setAttendanceDate(today);
+
+        if(attendanceOptional.isPresent()){
+            Attendance attendance = attendanceOptional.get();
+
+            response.setClockIn(attendance.getClockIn());
+            response.setClockOut(attendance.getClockOut());
+            response.setWorkingMinutes(attendance.getWorkingMinutes());
+            response.setStatus(attendance.getStatus());
+        }else{
+
+            response.setClockIn(null);
+            response.setClockOut(null);
+            response.setWorkingMinutes(0);
+            response.setStatus(AttendanceStatus.NOT_STARTED);
+        }
+
+        return response;
+    }
+
 }
