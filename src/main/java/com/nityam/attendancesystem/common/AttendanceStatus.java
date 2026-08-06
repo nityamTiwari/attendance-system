@@ -3,5 +3,6 @@ package com.nityam.attendancesystem.common;
 public enum AttendanceStatus {
 
     ACTIVE,
-    COMPLETED
+    COMPLETED,
+    NOT_STARTED
 }
