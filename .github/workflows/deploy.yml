@@ -35,6 +35,9 @@ jobs:
              cd ~/attendance-system
              git fetch origin
              git reset --hard origin/master
+             docker container prune -f
+             docker image prune -af
+             docker builder prune -af
              docker compose up -d --build
        - name: Wait for Application
          run: sleep 20
@@ -45,5 +48,4 @@ jobs:
             
             
             
-
 
