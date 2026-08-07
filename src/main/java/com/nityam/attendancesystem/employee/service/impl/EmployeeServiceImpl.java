@@ -72,7 +72,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public LoginResponse login(LoginRequest login) {
-        System.out.println("Step 1");
+        if(!employeeRepository.existsByEmail(login.getEmail())){
+            throw new EmailAlreadyExistsException("Email not Registered.");
+        }
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -80,7 +82,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                         login.getPassword()
                 )
         );
-        System.out.println("Step 1");
 
         EmployeeUserDetails userDetails = (EmployeeUserDetails) authentication.getPrincipal();
         String jwtToken = jwtService.generateToken(userDetails);
