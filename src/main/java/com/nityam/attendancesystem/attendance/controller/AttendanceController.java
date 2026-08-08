@@ -35,7 +35,7 @@ public class AttendanceController {
         return  ResponseEntity.ok(response);
     }
 
-    @PostMapping("/history")
+    @GetMapping("/history")
     public ResponseEntity<?> attendanceHistory(){
         List<AttendanceResponse> response =  attendanceService.attendanceHistory();
         return  ResponseEntity.ok(response);
@@ -43,7 +43,6 @@ public class AttendanceController {
 
     @GetMapping("/today")
     public ResponseEntity<TodayAttendanceResponse> todayAttendance(){
-
         return ResponseEntity.ok(attendanceService.getTodayAttendance());
     }
 
